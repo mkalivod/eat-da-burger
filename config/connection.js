@@ -1,45 +1,23 @@
-
-// CONNECT NODE TO MYSQL SERVER ---> Will export the connection to the MySQL server && will import 'connection.js' into 'orm.js'
-/*
-// NODE DEPENDENCIES
+// Pull in required dependencies
 var mysql = require('mysql');
 
-// CREATE CONNECTION OBJECT
+// Create the MySQL connection object
 var connection = mysql.createConnection({
-    port: 3306,
-    host: 'localhost',
-    user: 'root',
-    password: 'Codem07!',
-    database: 'burgers_db'
-});
+		port: 3306,
+		host: 'localhost',
+		user: 'root',
+		password: 'Codem07!',
+		database: 'burgers_db'
+	});
 
-// ESTABLISH CONNECTION TO MYSQL
+// Make the connection to MySQL
 connection.connect(function(err) {
-    if (err) {
+  if (err) {
     console.error('ERROR: MySQL connection error -- ' + err.stack + '\n\n');
     return;
-    }
-    console.log('Connected to MYSQL database as id ' + connection.threadId + '\n\n');
-})
+  }
+  console.log('Connected to MySQL database as id ' + connection.threadId + '\n\n');
+});
 
-// EXPORT CONNECTION 
-module.exports = connection;
-*/
-
-var mysql = require('mysql');
-var connection;
-
-
-if (process.env.JAWSDB_URL) {
-    connection = mysql.createConnection(process.env.JAWSDB_URL);
-} else {
-    connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Codem07!',
-    database: 'burgers_db'
-    });
-};
-
-connection.connect();
+// Export connection for ORM use
 module.exports = connection;
