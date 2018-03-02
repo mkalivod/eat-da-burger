@@ -1,10 +1,9 @@
 
-
--- Database Creation (burgers_db)
+-- DATABASE CREATION (burgers_db)
 CREATE DATABASE burgers_db;
 USE burgers_db;
 
--- Table Creation (burgers)
+-- TABLE CREATION (burgers)
 CREATE TABLE burgers
 (
 	id int NOT NULL AUTO_INCREMENT,

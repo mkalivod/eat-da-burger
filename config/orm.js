@@ -1,4 +1,7 @@
-// IMPORT MYSQL CONNECTION OBJECT -- created in connection.js
+
+// PURPOSE ---> CREATE METHODS TO EXECUTE THE MYSQL COMANDS IN THE CONTROLLERS 
+
+// IMPORT MYSQL CONNECTION OBJECT (from connection.js) 
 var connection = require ('./connection.js');
 
 // HELPER FUNCTIONS
@@ -18,13 +21,12 @@ function objToSql(ob) {
 	for (var key in ob) {
 		arr.push(key + "=" + ob[key]);
 	}
-
 	return arr.toString();
 }
 
 // CREATE ORM OBJECT FOR SQL QUERIES  
 var orm = {
-        // FUNCTION TO RETURN ALL TABLE ENTRIES 
+    // FUNCTION TO RETURN ALL TABLE ENTRIES -- selectAll()
 	selectAll: function(tableInput, cb) {   
        
         var queryString = "SELECT * FROM " + tableInput + ";";  
@@ -37,7 +39,7 @@ var orm = {
 		});
 	},
 
-	// FUNCTION TO INSERT SINGLE TABLE ENTRY
+	// FUNCTION TO INSERT SINGLE TABLE ENTRY -- insertOne()
 	insertOne: function(table, cols, vals, cb) {
 		
 		var queryString = "INSERT INTO " + table;
@@ -57,7 +59,7 @@ var orm = {
 		});
 	},
 
-	// FUNCTION TO UPDATE A SINGLE TABLE ENTRY
+	// FUNCTION TO UPDATE A SINGLE TABLE ENTRY -- updateOne()
 	updateOne: function(table, objColVals, condition, cb) {
 		
 		var queryString = "UPDATE " + table;

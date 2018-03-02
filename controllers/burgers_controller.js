@@ -1,16 +1,14 @@
 
 
-// NODE DEPENDENCIES
+// NODE DEPENDENCIES & IMPORT burger.js
 var express = require('express');
-var router = express.Router();
-
-// IMPORT MODEL (burger.js) 
 var burger = require('../models/burger.js');
+
+// CREATE ROUTER FOR APP TO BE EXPORTED 
+var router = express.Router();
 
 //CREATE ROUTES & LOGIC 
 
-
-//RENDER BURGERS TO DOM -- INDEX PAGE
 router.get('/', function(req, res) {
   
     burger.selectAll(function(data) {
@@ -21,8 +19,7 @@ router.get('/', function(req, res) {
     res.render('index', hbsObject);
   });
 });
-
-// CREATE NEW BURGER 
+ 
 router.post('/burgers', function(req, res) {
   burger.insertOne([
     'burger_name'
@@ -33,7 +30,6 @@ router.post('/burgers', function(req, res) {
   });
 });
 
-// DEVOUR BURGER 
 router.put('/burgers/:id', function(req, res) {
   var condition = 'id = ' + req.params.id;
 
@@ -44,5 +40,5 @@ router.put('/burgers/:id', function(req, res) {
   });
 });
 
-// Export ROUTES
+// EXPORT ROUTES
 module.exports = router;
